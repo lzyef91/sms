@@ -1,0 +1,26 @@
+{
+    "name": "nldou\/sms",
+    "description": "a laravel package of overtrue\/easy-sms",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "luzy",
+            "email": "zhaoyang.lu@nldou.com"
+        }
+    ],
+    "require": {
+        "overtrue/easy-sms": "^1.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Nldou\\SMS\\": "src"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Nldou\\SMS\\ServiceProvider"
+            ]
+        }
+    }
+}
