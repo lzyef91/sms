@@ -3,7 +3,7 @@
 namespace Nldou\SMS;
 
 use Nldou\SMS\SMS;
-use Overtrue\EasySms\EasySms;
+use \Overtrue\EasySms\EasySms;
 
 class ServiceProvider extends \Illuminate\Support\ServiceProvider
 {

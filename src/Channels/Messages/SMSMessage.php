@@ -2,8 +2,8 @@
 
 namespace App\Channels\Messages;
 
-use Overtrue\EasySms\Message;
-use Overtrue\EasySms\Strategies\OrderStrategy;
+use \Overtrue\EasySms\Message;
+use \Overtrue\EasySms\Strategies\OrderStrategy;
 
 class SMSMessage extends Message
 {

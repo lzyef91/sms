@@ -1,10 +1,10 @@
 <?php
 
 namespace Nldou\SMS;
-use Overtrue\EasySms\EasySms;
-use Overtrue\EasySms\PhoneNumber;
-use Overtrue\EasySms\Message;
-use Overtrue\EasySms\Exceptions\NoGatewayAvailableException;
+use \Overtrue\EasySms\EasySms;
+use \Overtrue\EasySms\PhoneNumber;
+use \Overtrue\EasySms\Message;
+use \Overtrue\EasySms\Exceptions\NoGatewayAvailableException;
 use Nldou\SMS\Exceptions\NoGatewayAvailableException as GateException;
 use Nldou\SMS\Exceptions\InvalidParamsException;
 
