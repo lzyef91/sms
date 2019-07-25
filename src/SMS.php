@@ -22,49 +22,85 @@ class SMS
         $this->sms = $sms;
     }
 
+    /**
+     * 设置短信内容
+     * @param string $content
+     */
     public function setContent(String $content)
     {
         $this->content = $content;
         return $this;
     }
 
+    /**
+     * 通过回调函数设置短信内容
+     * 回调参数为当前网关 Overtrue\EasySms\GatewaysGateway实例 可以使用其中的方法
+     * @param closure $func($gateway)
+     */
     public function setContentByGates(\Closure $func)
     {
         $this->content = $func;
         return $this;
     }
 
+    /**
+     * 设置模板
+     * @param string $templateID
+     */
     public function setTemplateID(String $templateID)
     {
         $this->template = $templateID;
         return $this;
     }
 
+    /**
+     * 通过回调函数设置模板
+     * 回调参数为当前网关 Overtrue\EasySms\GatewaysGateway实例 可以使用其中的方法
+     * @param closure $func($gateway)
+     */
     public function setTemplateIDByGates(\Closure $func)
     {
         $this->template = $func;
         return $this;
     }
 
+    /**
+     * 设置短信模板参数
+     * @param array $data
+     */
     public function setTemplateData(Array $data)
     {
         $this->templateData = $data;
         return $this;
     }
 
+    /**
+     * 通过回调函数设置短信模板参数
+     * 回调参数为当前网关 Overtrue\EasySms\GatewaysGateway实例 可以使用其中的方法
+     * @param closure $func($gateway)
+     */
     public function setTemplateDataByGates(\Closure $func)
     {
         $this->templateData = $func;
         return $this;
     }
 
+    /**
+     * 设置网关
+     * 按数组顺序进行调用 例 ['aliyun','yunpian'...]
+     */
     public function setGateways(Array $gateways)
     {
         $this->gateways = $gateways;
         return $this;
     }
 
-    public function setPhone($phone, $areaCode = false)
+    /**
+     * 设置手机号码
+     * @param string $phone 手机号码
+     * @param mixed $areaCode 国家代码
+     */
+    public function setPhone(String $phone, $areaCode = false)
     {
         if ($areaCode) {
             $this->phone = new PhoneNumber($phone, $areaCode);
@@ -74,7 +110,7 @@ class SMS
         return $this;
     }
 
-    public function reset()
+    private function reset()
     {
         $this->phone = null;
         $this->content = null;
@@ -83,6 +119,10 @@ class SMS
         $this->gateways = null;
     }
 
+    /**
+     * 发送短信
+     * @param mixed $msgCls \Overtrue\EasySms\Message实例 使用短信类发送
+     */
     public function send(Message $msgCls = null)
     {
         if (!$this->phone) {

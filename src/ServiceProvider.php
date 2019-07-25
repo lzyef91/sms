@@ -19,10 +19,13 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
 
     public function register()
     {
-        $this->app->singleton(SMS::class, function () {
-            $config = config('nldousms');
-            $sms = new EasySms($config);
-            return new SMS($sms);
+        $source = realpath(__DIR__.'/Config/nldousms.php');
+        $this->mergeConfigFrom($source, 'nldousms');
+        $config = config('nldousms');
+        $easysms = new EasySms($config);
+
+        $this->app->singleton(SMS::class, function ($app) use ($easysms) {
+            return new SMS($easysms);
         });
         $this->app->alias(SMS::class, 'sms');
     }
