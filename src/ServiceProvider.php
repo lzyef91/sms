@@ -13,7 +13,6 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
     {
         if ($this->app->runningInConsole()) {
             $this->publishes([__DIR__.'/Config' => config_path()], 'nldou-sms-config');
-            $this->publishes([__DIR__.'/Notifications' => app_path('Notifications')], 'nldou-sms-notify');
         }
     }
 

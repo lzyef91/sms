@@ -1,12 +1,12 @@
 <?php
 
-namespace Nldou\SMS\Notifications\Channels;
+namespace Nldou\SMS\Notifications;
 
 use Illuminate\Notifications\AnonymousNotifiable;
 use Illuminate\Notifications\Notification;
 use Nldou\SMS\Exceptions\CoundNotSendNotificationException;
 
-class NldouSmsChannel
+class Channel
 {
     /**
      * 发送短信通知
@@ -26,6 +26,7 @@ class NldouSmsChannel
         }
 
         $message = $notification->toNldouSms($notifiable);
+
         try {
             app('sms')->setPhone($to)->send($message);
         } catch (\Exception $e) {
