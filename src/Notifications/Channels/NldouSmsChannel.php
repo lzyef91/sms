@@ -1,6 +1,6 @@
 <?php
 
-namespace Nldou\SMS\Channels;
+namespace Nldou\SMS\Notifications\Channels;
 
 use Illuminate\Notifications\AnonymousNotifiable;
 use Illuminate\Notifications\Notification;

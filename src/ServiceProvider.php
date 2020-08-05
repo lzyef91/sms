@@ -13,7 +13,7 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
     {
         if ($this->app->runningInConsole()) {
             $this->publishes([__DIR__.'/Config' => config_path()], 'nldou-sms-config');
-            $this->publishes([__DIR__.'/Channels' => app_path('Channels')], 'nldou-sms-notification-channel');
+            $this->publishes([__DIR__.'/Notifications' => app_path('Notifications')], 'nldou-sms-notify');
         }
     }
 
@@ -21,12 +21,15 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
     {
         $source = realpath(__DIR__.'/Config/nldousms.php');
         $this->mergeConfigFrom($source, 'nldousms');
+
         $config = config('nldousms');
+
         $easysms = new EasySms($config);
 
         $this->app->singleton(SMS::class, function ($app) use ($easysms) {
             return new SMS($easysms);
         });
+
         $this->app->alias(SMS::class, 'sms');
     }
 
