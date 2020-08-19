@@ -4,11 +4,11 @@ namespace Nldou\SMS;
 
 use Nldou\SMS\SMS;
 use \Overtrue\EasySms\EasySms;
+use \Illuminate\Support\ServiceProvider as LaravelServiceProvider;
+use \Illuminate\Contracts\Support\DeferrableProvider;
 
-class ServiceProvider extends \Illuminate\Support\ServiceProvider
+class ServiceProvider extends LaravelServiceProvider implements DeferrableProvider
 {
-    protected $defer = true;
-
     public function boot()
     {
         if ($this->app->runningInConsole()) {
